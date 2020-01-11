@@ -1,0 +1,5 @@
+name: BasicQueue
+main: me.infinityz.bungee.QueuePlugin
+version: 1.0
+author: InfinityZ
+
