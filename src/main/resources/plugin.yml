@@ -1,5 +1,5 @@
 name: BasicQueue
-main: me.infinityz.bungee.QueuePlugin
+main: me.infinityz.spigot.QueueSpigotPlugin
 version: 1.0
 author: InfinityZ
 
