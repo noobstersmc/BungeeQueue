@@ -45,6 +45,10 @@ public class Events implements Listener {
             e.setTarget(ProxyServer.getInstance().getServerInfo("limbo") == null
                     ? ProxyServer.getInstance().getServers().entrySet().iterator().next().getValue()
                     : ProxyServer.getInstance().getServerInfo("limbo"));
+
+
+
+                    
             player.sendMessage(new TextComponent(ChatColor.translateAlternateColorCodes('&', "&cYou've been sent to a limbo server because the maximum player capacity was reached!")));
             return;
         }
