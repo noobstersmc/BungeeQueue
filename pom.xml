@@ -20,8 +20,8 @@
     <dependencies>
         <dependency>
             <groupId>jars.me.infinityz</groupId>
-            <artifactId>Hexacord</artifactId>
-            <version>v246</version>
+            <artifactId>PaperSpigot</artifactId>
+            <version>1.8.8</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
