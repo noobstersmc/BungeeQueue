@@ -85,7 +85,6 @@ public class QueuePlugin extends Plugin {
                     ProxiedPlayer player = getProxy().getPlayer(entry.getKey());
                     if(player == null){
                         final_destination.remove(entry.getKey());
-                        
                         continue;
                     }
                     player.sendMessage(ChatMessageType.ACTION_BAR,

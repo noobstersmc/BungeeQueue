@@ -30,7 +30,7 @@ public class Events implements Listener {
 
     @EventHandler
     public void on(PostLoginEvent event) {
-        if (ProxyServer.getInstance().getOnlineCount() <= Lang.GLOBAL_SLOTS)
+        if (ProxyServer.getInstance().getOnlineCount()<= Lang.GLOBAL_SLOTS)
             return;
         if (!event.getPlayer().hasPermission(Lang.QUEUE_OVERRIDE_PERMISSION)) {
             // Send the player to the limbo
@@ -74,7 +74,7 @@ public class Events implements Listener {
 
     
     public static void moveQueue() {
-        if (Lang.GLOBAL_SLOTS <= ProxyServer.getInstance().getOnlineCount())
+        if (Lang.GLOBAL_SLOTS <= ProxyServer.getInstance().getOnlineCount() - QueuePlugin.final_destination.size())
             return;
         if (QueuePlugin.final_destination.isEmpty())
             return;
