@@ -15,14 +15,14 @@ public class QueueEvents implements Listener {
     
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
-        e.setJoinMessage("joinMessage");
+        e.setJoinMessage("");
         e.getPlayer().setGameMode(GameMode.SPECTATOR);
         e.getPlayer().sendTitle("Welcome to the Limbo!", "Have fun doing nothing");
     }
 
     @EventHandler
     public void onLeave(PlayerQuitEvent e){
-        e.setQuitMessage("quitMessage");
+        e.setQuitMessage("");
     }
     @EventHandler
     public void onChat(AsyncPlayerChatEvent e){
