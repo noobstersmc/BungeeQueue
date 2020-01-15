@@ -1,6 +1,6 @@
 package me.infinityz.bungee.commands;
 
-import me.infinityz.bungee.QueuePlugin;
+import me.infinityz.bungee.Lang;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.plugin.Command;
@@ -11,7 +11,7 @@ import net.md_5.bungee.api.plugin.Command;
 public class SlotsCommand extends Command {
 
     public SlotsCommand() {
-        super("globalslots", "queue.slots");
+        super("globalslots", Lang.GLOBAL_SLOTS_PERMISSION);
     }
 
     @Override
@@ -21,12 +21,12 @@ public class SlotsCommand extends Command {
             return;
         }
         if (args[0].equalsIgnoreCase("current")) {
-            sender.sendMessage(new TextComponent("Current max capacity: " + QueuePlugin.global_slots));
+            sender.sendMessage(new TextComponent("Current max capacity: " + Lang.GLOBAL_SLOTS));
             return;
         }
         int integer = Integer.parseInt(args[0]);
         sender.sendMessage(new TextComponent("New max capacity is: " + integer));
-        QueuePlugin.global_slots = integer;
+        Lang.GLOBAL_SLOTS = integer;
 
     }
 
