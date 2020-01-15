@@ -1,0 +1,11 @@
+CURRENT_LIMBO_POSITION: "&6You're currently &f<position>/<total> &6to join &f<server>"
+SEND_TO_LIMBO: "&cYou were sent to the limbo because the max player capacity is <global_slots>!"
+LEFT_LIMBO_JOIN_SERVER: "&aYou're done waiting, sending you to <server>!"
+QUEUE_OVERRIDE_PERMISSION: "queue.override"
+SUPER_SLOTS_OVERRIDE_PERMISSION: "super.slots.override"
+GLOBAL_SLOTS_PERMISSION: "global.slots"
+GLOBAL_SLOTS: 0
+SUPER_SLOTS: 0
+
+
+
