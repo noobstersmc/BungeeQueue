@@ -4,12 +4,14 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
- * QueueSpigotPlugin
+ * AnarchySpigotPlugin
  */
-public class QueueSpigotPlugin extends JavaPlugin {
+public class AnarchySpigotPlugin extends JavaPlugin {
+    public static AnarchySpigotPlugin instance;
     
     @Override
     public void onEnable() {
+        instance =this;
         Bukkit.getPluginManager().registerEvents(new QueueEvents(), this);
     }
 

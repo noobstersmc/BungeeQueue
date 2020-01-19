@@ -1,5 +1,6 @@
-name: BasicQueue
-main: me.infinityz.spigot.QueueSpigotPlugin
+name: AnarchyPlugin
+main: me.infinityz.spigot.AnarchySpigotPlugin
 version: 1.0
 author: InfinityZ
+api-version: 1.13
 
