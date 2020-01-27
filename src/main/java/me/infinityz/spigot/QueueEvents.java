@@ -2,6 +2,7 @@ package me.infinityz.spigot;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -24,6 +25,13 @@ public class QueueEvents implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
         e.setJoinMessage("");
+        if(e.getPlayer().hasPlayedBefore())return;
+        
+        Location loc = new Location(e.getPlayer().getWorld(), 0, 0, 0);
+        loc.setX(loc.getX() + Math.random() * 1000 * 2.0 - 1000);
+        loc.setZ(loc.getZ() + Math.random() * 1000 * 2.0 - 1000);
+        loc = loc.getWorld().getHighestBlockAt(loc).getLocation().add(0.0, 2.0, 0.0);
+        e.getPlayer().teleport(loc);
     }
 
     @EventHandler
@@ -36,13 +44,21 @@ public class QueueEvents implements Listener {
     public void onDeath(PlayerDeathEvent e) {
         if (e.getEntity().hasPermission("queue.override"))
             return;
-        Bukkit.getScheduler().runTaskLater(AnarchySpigotPlugin.instance, () -> {
-
-            e.getEntity().spigot().respawn();
-            e.getEntity().kickPlayer(
-                    ChatColor.translateAlternateColorCodes('&', "&fYou died, adquired &6rank&f to play freely!"));
-
-        }, 1L);
+            Bukkit.getScheduler().runTaskLater(AnarchySpigotPlugin.instance, () -> {
+    
+                e.getEntity().spigot().respawn();
+                Location loc = new Location(e.getEntity().getWorld(), 0, 0, 0);
+                loc.setX(loc.getX() + Math.random() * 1000 * 2.0 - 1000);
+                loc.setZ(loc.getZ() + Math.random() * 1000 * 2.0 - 1000);
+                loc = loc.getWorld().getHighestBlockAt(loc).getLocation().add(0.0, 2.0, 0.0);
+                e.getEntity().teleport(loc);
+            }, 1L);
+            Bukkit.getScheduler().runTaskLater(AnarchySpigotPlugin.instance, () -> {
+    
+                e.getEntity().kickPlayer(
+                        ChatColor.translateAlternateColorCodes('&', "&fYou died, adquired &6rank&f to play freely!"));
+    
+            }, 10L);
     }
 
     @EventHandler
