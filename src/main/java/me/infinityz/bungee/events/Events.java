@@ -55,7 +55,7 @@ public class Events implements Listener {
             player.sendMessage(new TextComponent(ChatColor.translateAlternateColorCodes('&',
                     Lang.SEND_TO_LIMBO.replace("<global_slots>", Lang.GLOBAL_SLOTS + ""))));
             // Store the data concerning the player's destination
-            QueuePlugin.final_destination.put(player.getUniqueId(), originalTarget);
+            QueuePlugin.final_destination.put(player.getUniqueId(), "Anarchy");
             return;
         }
 
