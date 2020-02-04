@@ -54,7 +54,7 @@ public class AnarchyCommand implements CommandExecutor, Listener {
             }
             Player player = Bukkit.getPlayer(args[0]);
             if(player == null || !player.isOnline()){
-                sender.sendMessage("Player is either null or online");
+                sender.sendMessage("Player is either null or online(" +  args[0]+")");
                 return true;
             }
             if(list.contains(player.getUniqueId())){
@@ -103,10 +103,11 @@ public class AnarchyCommand implements CommandExecutor, Listener {
 
     void teleport(Player player, int seconds, String tpMSG, Location location, boolean checkForMovement) {
         player.sendMessage(ChatColor.translateAlternateColorCodes('&', tpMSG));
-        // Give effects
-        player.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 5, 0));
-        player.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 5, 0));
-        player.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, 5, 0));
+        // Give effectss
+        player.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 5*20, 0));
+        player.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 5*20, 0));
+        player.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 5*20, 0));
+        player.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, 5*20, 0));
         // play sound
         player.playSound(player.getLocation(), Sound.BLOCK_CONDUIT_AMBIENT, 100000000.0F, 1.0F);
         if (checkForMovement) {
@@ -124,6 +125,8 @@ public class AnarchyCommand implements CommandExecutor, Listener {
             }
             player.playSound(player.getLocation(), Sound.BLOCK_BEACON_ACTIVATE, 100000000.0F, 1.0F);
             player.teleport(location);
+            player.sendMessage(ChatColor.translateAlternateColorCodes('&',
+                    checkForMovement == true ?  "&aWelcome to Spawn!"  : "&aGood Luck!"));
 
         }, 20 * seconds);
     }
@@ -133,10 +136,12 @@ public class AnarchyCommand implements CommandExecutor, Listener {
         if (!delay.containsKey(e.getPlayer().getUniqueId()))
             return;
         final Player player = e.getPlayer();
-        if (e.getTo().distance(e.getFrom()) >= 1) {
+
+        if (Math.abs(e.getTo().distance(e.getFrom())) >= 0.05) {
             delay.remove(player.getUniqueId());
             player.removePotionEffect(PotionEffectType.CONFUSION);
             player.removePotionEffect(PotionEffectType.BLINDNESS);
+            player.removePotionEffect(PotionEffectType.SLOW);
             player.removePotionEffect(PotionEffectType.GLOWING);
             player.sendMessage(ChatColor.translateAlternateColorCodes('&',
                     "&cTeleportation to spawn was cancelled due to movement!"));
