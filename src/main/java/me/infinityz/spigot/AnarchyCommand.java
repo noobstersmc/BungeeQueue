@@ -57,6 +57,9 @@ public class AnarchyCommand implements CommandExecutor, Listener {
                 sender.sendMessage("Player is either null or online");
                 return true;
             }
+            if(list.contains(player.getUniqueId())){
+                sender.sendMessage("Player already there!");
+            }
             int x1, z1, x2, z2, radius;
             x1 = Integer.parseInt(args[1]);
             z1 = Integer.parseInt(args[2]);
