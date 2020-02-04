@@ -106,8 +106,8 @@ public class AnarchyCommand implements CommandExecutor, Listener {
     void teleport(Player player, int seconds, String tpMSG, Location location, boolean checkForMovement) {
         player.sendMessage(ChatColor.translateAlternateColorCodes('&', tpMSG));
         // Give effectss
-        player.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 5*20, 0));
-        player.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 5*20, 0));
+        player.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 5*20, 100));
+        player.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 5*20, 100));
         player.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 5*20, 0));
         player.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, 5*20, 0));
         // play sound
@@ -146,17 +146,17 @@ public class AnarchyCommand implements CommandExecutor, Listener {
             player.removePotionEffect(PotionEffectType.SLOW);
             player.removePotionEffect(PotionEffectType.GLOWING);
             player.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                    "&cTeleportation to spawn was cancelled due to movement!"));
+                    "&cTeleportation to spawn cancelled due to movement!"));
         }
 
     }
+
     @EventHandler
     public void onTeleport(PlayerTeleportEvent e){
-        Bukkit.broadcastMessage(e.getCause()+ "");
-    
-        double to = e.getTo().getX();
-        double from = e.getFrom().getX();
-        Bukkit.broadcastMessage("" + Math.abs(to - from));
+        Location loc= e.getTo();
+        if(loc.getBlockX() == 180 && loc.getBlockZ ()== -158 && loc.getBlockY() ==64){
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(),  "randomtp "+ e.getPlayer().getName()+" -2000 2000 2000 -2000 4000" );
+        }
     }
 
 }
