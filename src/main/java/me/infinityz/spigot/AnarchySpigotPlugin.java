@@ -12,7 +12,11 @@ public class AnarchySpigotPlugin extends JavaPlugin {
     @Override
     public void onEnable() {
         instance =this;
-        Bukkit.getPluginManager().registerEvents(new QueueEvents(), this);
+        AnarchyCommand anarchyCommand = new AnarchyCommand();
+        Bukkit.getPluginManager().registerEvents(anarchyCommand, this);
+        getCommand("randomtp").setExecutor(anarchyCommand);
+        getCommand("spawn").setExecutor(anarchyCommand);
+
     }
 
     

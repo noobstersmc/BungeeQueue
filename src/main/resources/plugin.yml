@@ -4,3 +4,7 @@ version: 1.0
 author: InfinityZ
 api-version: 1.13
 
+commands:
+  randomtp:
+  spawn:
+
