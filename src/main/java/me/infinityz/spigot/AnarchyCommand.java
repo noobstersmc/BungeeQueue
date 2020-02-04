@@ -1,5 +1,6 @@
 package me.infinityz.spigot;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -19,6 +20,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.event.player.PlayerTeleportEvent;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
@@ -147,6 +149,14 @@ public class AnarchyCommand implements CommandExecutor, Listener {
                     "&cTeleportation to spawn was cancelled due to movement!"));
         }
 
+    }
+    @EventHandler
+    public void onTeleport(PlayerTeleportEvent e){
+        Bukkit.broadcastMessage(e.getCause()+ "");
+    
+        double to = e.getTo().getX();
+        double from = e.getFrom().getX();
+        Bukkit.broadcastMessage("" + Math.abs(to - from));
     }
 
 }
